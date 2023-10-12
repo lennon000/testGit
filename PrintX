@@ -1,0 +1,52 @@
+@Test
+public void test() {
+    int height = 6;
+    printIt(height);
+}
+    private void printIt(int height) {
+        for (int i = 1; i <= (height+1)/2; i++) {
+            int numOfX = getNumberOfSpaceUpper(height, i);
+            int numOfSpace = getNumberOfXUpper(height, i);
+            printXAndSpace(numOfX, numOfSpace);
+        }
+
+        for (int i = (height+1)/2 +1; i <= height; i++) {
+            int numOfX = getNumberOfSpaceLower(height, i);
+            int numOfSpace = getNumberOfXLower(height, i);
+            printXAndSpace(numOfX, numOfSpace);
+        }
+    }
+
+    private int getNumberOfXUpper(int height, int i) {
+        int numX = getNumberOfSpaceUpper(height, i);
+        int width = (height + 1) / 2;
+
+        return ((width - numX) -1)*2 +1 ;
+    }
+
+    private int getNumberOfSpaceUpper(int height, int i) {
+        int width = (height + 1) / 2;
+        return Math.abs(width -i) ;
+    }
+
+    private int getNumberOfXLower(int height, int i) {
+        int numX = getNumberOfSpaceLower(height, i);
+        int width = (height + 1) / 2;
+
+        return ((width - numX) -1)*2 +1 ;
+    }
+
+    private int getNumberOfSpaceLower(int height, int i) {
+        int width = (height + 1) / 2;
+        return Math.abs(width -i + (height+1)%2) ;
+    }
+
+    private void printXAndSpace(int numOfX, int numOfSpace) {
+        for (int j = 1; j <=numOfX; j++) {
+            System.out.print(" ");
+        }
+        for (int f = 1; f <=numOfSpace; f++) {
+            System.out.print("X");
+        }
+        System.out.println();
+    }
